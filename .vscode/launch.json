@@ -6,31 +6,31 @@
 // Configuration: https://docs.platformio.org/page/projectconf/section_env_debug.html
 
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "platformio-debug",
-            "request": "launch",
-            "name": "PIO Debug",
-            "executable": "/Users/staefsn/Develop/Misc/pio-baremetal-atmel-cmsis/.pio/build/adafruit_metro_m0/firmware.elf",
-            "projectEnvName": "adafruit_metro_m0",
-            "toolchainBinDir": "/Users/staefsn/.platformio/packages/toolchain-gccarmnoneeabi/bin",
-            "internalConsoleOptions": "openOnSessionStart",
-            "svdPath": "/Users/staefsn/.platformio/platforms/atmelsam/misc/svd/ATSAMD21G18A.svd",
-            "preLaunchTask": {
-                "type": "PlatformIO",
-                "task": "Pre-Debug"
-            }
-        },
-        {
-            "type": "platformio-debug",
-            "request": "launch",
-            "name": "PIO Debug (skip Pre-Debug)",
-            "executable": "/Users/staefsn/Develop/Misc/pio-baremetal-atmel-cmsis/.pio/build/adafruit_metro_m0/firmware.elf",
-            "projectEnvName": "adafruit_metro_m0",
-            "toolchainBinDir": "/Users/staefsn/.platformio/packages/toolchain-gccarmnoneeabi/bin",
-            "internalConsoleOptions": "openOnSessionStart",
-            "svdPath": "/Users/staefsn/.platformio/platforms/atmelsam/misc/svd/ATSAMD21G18A.svd"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "custom",
+      "name": "AdaFruit Metro M0+",
+      "cwd": "${workspaceFolder}",
+      "targetCreateCommands": [
+        "target create .pio/build/adafruit_metro_m0/firmware.elf",
+      ],
+      "processCreateCommands": [
+        "gdb-remote 3333",
+      ]
+    },
+    {
+      "type": "lldb",
+      "request": "custom",
+      "name": "Arduino Due",
+      "cwd": "${workspaceFolder}",
+      "targetCreateCommands": [
+        "target create .pio/build/due/firmware.elf",
+      ],
+      "processCreateCommands": [
+        "gdb-remote 3333",
+      ]
+    },
+  ]
 }
